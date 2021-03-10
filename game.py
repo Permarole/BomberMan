@@ -26,4 +26,5 @@ class Game:
         pass
 
     def game_over(self):
-        pass
+        self._is_playing = False
+
