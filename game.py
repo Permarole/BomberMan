@@ -28,3 +28,5 @@ class Game:
     def game_over(self):
         self._is_playing = False
 
+    def get_is_playing(self):
+        return self._is_playing
