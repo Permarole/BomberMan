@@ -1,9 +1,9 @@
 import animation
 
 
-class Block(animation.Animation):
+class Block(animation.AnimateSprite):
 
-    def __init__(self, resistance=1):
+    def __init__(self, pos, resistance=1):
         super().__init__('block.png')
         self._resistance = resistance
         self.rect = self.image.get_rect()
