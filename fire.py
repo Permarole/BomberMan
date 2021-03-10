@@ -1,4 +1,3 @@
-import bomb
 import animation
 
 class Fire(animation.AnimateSprite):
