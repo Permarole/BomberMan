@@ -1,0 +1,68 @@
+import pygame
+
+
+# Define a class that will handle animations
+class AnimateSprite(pygame.sprite.Sprite):
+
+    def __init__(self, sprite_name, size=(200, 200)):
+        super().__init__()
+        self.size = size
+        self.image = pygame.image.load(f'assets/{sprite_name}.png')
+        self.image = pygame.transform.scale(self.image, size)
+        self.current_image = 0  # Start animation at first image
+        self.images = animations.get(sprite_name)
+        self.animation = False
+
+    # method to start animation
+    def start_animation(self):
+        self.animation = True
+
+    def animate(self, loop=False):
+
+        # Check if animation is activated
+        if self.animation:
+
+            self.current_image += 1
+
+            # check EOF
+            if self.current_image >= len(self.images):
+                # Reset animation
+                self.current_image = 0
+
+                # check if animation is not in loop mode
+                if not loop :
+                    self.animation = False
+
+            self.image = self.images[self.current_image]
+            self.image = pygame.transform.scale(self.image, self.size)
+
+
+
+# load sprite's images
+def load_animation_images(sprite_name):
+    # load 24 images from the right file
+    images = []
+    # Get path
+    path = f"assets/{sprite_name}/{sprite_name}"
+
+    # Loop for every image
+    for num in range(1, 24):
+        image_path = path + str(num) + '.png'
+        images.append(pygame.image.load(image_path))
+
+    return images
+
+def load_images(sprite_name):
+    pass
+
+# Create dictionary that will contain the images of every sprites
+# TODO implement correct sprite
+animations = {
+    'mummy': load_animation_images('mummy'),
+    'player': load_animation_images('player'),
+    'alien': load_animation_images('alien')
+}
+
+images = {
+    'fire' : load_images('fire')
+}
