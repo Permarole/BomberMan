@@ -16,11 +16,11 @@ class Game:
         self._pressed = dict()
         self._bonuses = dict()
         self._sound_manager = SoundManager()
-        self._player = Player()
+        self._player = Player((0,0),"red") 
         self._level = level
 
     def start(self):
-        pass
+        self._is_playing = True
 
     def update(self):
         pass
