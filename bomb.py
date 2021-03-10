@@ -1,7 +1,7 @@
 import animation
 
 
-class Bomb(animation.Animation):
+class Bomb(animation.AnimateSprite):
 
     def __init__(self, bomber, power=3):
         super().__init__('bomb.png')
@@ -15,6 +15,7 @@ class Bomb(animation.Animation):
 
     def explode(self):
         """ Create fire animation and free one bomber's stack if it still exists """
+
         pass
 
 

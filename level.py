@@ -1,14 +1,15 @@
 import numpy as np
 import enum
 
+
 class Cases(enum.Enum):
     VOID = 0
     SPAWN = 1
     BLOCK = 2
     UNBREAKABLE = 3
 
-
 # '■' '□'
+
 
 class Level:
 

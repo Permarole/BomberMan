@@ -1,7 +1,7 @@
 import animation
 
 
-class Bomber(animation.Animation):
+class Bomber(animation.AnimateSprite):
     """ BomberMan, everything is in the name """
 
     def __init__(self, pos, color, speed=5, stack=1, fire_power=3, shield=False):

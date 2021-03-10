@@ -1,9 +1,10 @@
 import bomb
+import animation
 
-class Fire(pygame.sprite.Sprite):
+class Fire(animation.AnimateSprite):
 
     def __init__(self, bomb, direction, speed=8, timer=30):
-        super(Fire, self).__init__()
+        super(Fire, self).__init__('fire')
         self.rect = self.image.get_rect()
         self.rect_x = bomb.get_pos()[0]
         self.rect_y = bomb.get_pos()[1]
