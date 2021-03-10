@@ -1,5 +1,5 @@
 import bomber
-
+import pygame 
 
 class Player(bomber.Bomber):
 
@@ -21,4 +21,5 @@ class Player(bomber.Bomber):
             movev += 1
         if keys[pygame.K_SPACE]:
             self.bomb()
-        self.move((moveh,moveh))
+        if moveh != 0 or movev != 0:
+            self.move((moveh,moveh))
