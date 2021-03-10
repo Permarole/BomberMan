@@ -21,3 +21,12 @@ screen = pygame.display.set_mode((WIDTH, HEIGHT))
 # TODO Import Background
 
 # TODO Import Start button
+
+#Keep the window opened
+running = True
+while running:
+  for event in pygame.event.get():
+        # END condition
+        if event.type == pygame.QUIT:
+            running = False
+            pygame.quit()
