@@ -14,7 +14,13 @@ class Bomber(animation.AnimateSprite):
         self.rect_x = pos[0]
         self.rect_y = pos[1]
 
-    # TODO : accessor
+    def get_pos(self):
+        """ Return bomber's position"""
+        return self.rect_x, self.rect_y
+
+    def get_power(self):
+        """ Return bomber's fire power"""
+        return self._fire_power
 
     def free_stack(self):
         """ Increase by one the bomb stack"""
@@ -31,5 +37,3 @@ class Bomber(animation.AnimateSprite):
     def bomb(self):
         """ Set one bomb on the current bomber's position """
         pass
-
-
