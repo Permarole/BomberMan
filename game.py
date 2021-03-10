@@ -22,8 +22,9 @@ class Game:
     def start(self):
         self._is_playing = True
 
-    def update(self):
-        pass
+    def update(self,screen):
+        keys = pygame.key.get_pressed()
+        self._player.listen(keys)
 
     def game_over(self):
         self._is_playing = False
