@@ -27,9 +27,22 @@ class Game:
         """ Create a new bomb and add it to _bombs"""
         self._bombs.add(Bomb(bomber))
 
+    def draw(self, screen) :
+        # Draw every bombs
+        self._bombs.draw(screen)
+        # Draw player
+        self._player.draw(screen)
+        # Draw every bonuses
+        self._bonuses.draw(screen)
+        # Draw every bombers
+        self._bombers.draw(screen)
+
     def update(self,screen):
         keys = pygame.key.get_pressed()
         self._player.listen(keys)
+
+        # Draw every sprite
+        self.draw(screen)
 
     def game_over(self):
         self._is_playing = False
