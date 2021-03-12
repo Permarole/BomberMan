@@ -3,10 +3,10 @@ import animation
 
 class Bomb(animation.AnimateSprite):
 
-    def __init__(self, bomber, power=3):
+    def __init__(self, bomber):
         super().__init__('bomb.png')
         self._bomber = bomber
-        self._power = power
+        self._power = bomber.get_power()
         self._rect = self.image.get_rect()
         self._rect_x, self._rect_y = bomber.get_pos()
 
