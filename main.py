@@ -29,6 +29,10 @@ pygame.init()
 pygame.display.set_caption("BomberMan")
 screen = pygame.display.set_mode((WIDTH, HEIGHT))
 
+def clicked(button) :
+    button.hide()
+    game.start()
+
 #Create the start Button 
 start_button = Button(
             screen, WIDTH/2-50, HEIGHT/2-50, 100, 100, text='Start',
@@ -36,6 +40,7 @@ start_button = Button(
             inactiveColour=(255, 0, 0),
             pressedColour=(0, 255, 0), radius=20,
             onClick = lambda : game.start()     #run game.start() when the button is clicked
+            onClick = lambda : clicked(start_button)     #run game.start() when the button is clicked
          )
 
 
@@ -46,18 +51,22 @@ start_button = Button(
 # Keep the window opened
 running = True
 while running:
+    screen.fill((15,15,15)) #fill the screen in black
     events = pygame.event.get()
     for event in events:
         # END condition
         if event.type == pygame.QUIT:
             running = False
             pygame.quit()
-    if(game._is_playing):
-    #When the game is not over
-        game.update(screen)
-        clock.tick(FPS)
-    else :
-    #When in the "Menu"
-        start_button.listen(events)
-        start_button.draw()
+            break
+    #run only if the loop didn't break
+    else: 
+        if(game._is_playing):
+            #When the game is not over
+            game.update(screen)        
+        else :
+            #When in the "Menu"
+            start_button.listen(events)
+            start_button.draw()
         pygame.display.update()
+    clock.tick(FPS)
