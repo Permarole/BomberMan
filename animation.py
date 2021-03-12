@@ -37,7 +37,7 @@ class AnimateSprite(pygame.sprite.Sprite):
             self.image = pygame.transform.scale(self.image, self.size)
 
 
-
+#TODO add exception if the file is not found
 # load sprite's images
 def load_animation_images(sprite_name):
     # load 24 images from the right file
@@ -67,8 +67,8 @@ def load_sprite_sheet(sprite_name,sprite_size,offset = (0,0)):
     nbrows = image.get_width()//sprite_size[0]
     nbcols = image.get_height()//sprite_size[1]
     # Append each sprite to the list
-    for row in range (nbrows):
-        for col in range (nbcols):
+    for col in range (nbcols):
+        for row in range (nbrows):
             images.append(image.subsurface(((row*sprite_size[0],col*sprite_size[1]),sprite_size)))
     return images
 
