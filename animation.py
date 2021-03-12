@@ -39,14 +39,14 @@ class AnimateSprite(pygame.sprite.Sprite):
 
 #TODO add exception if the file is not found
 # load sprite's images
-def load_animation_images(sprite_name):
-    # load 24 images from the right file
+def load_animation_images(sprite_name,nb_image):
+    # load nb_image images from the right file
     images = []
     # Get path
     path = f"assets/{sprite_name}/{sprite_name}"
 
     # Loop for every image
-    for num in range(1, 24):
+    for num in range(1, nb_image):
         image_path = path + str(num) + '.png'
         images.append(pygame.image.load(image_path))
 
