@@ -47,5 +47,9 @@ class Game:
     def game_over(self):
         self._is_playing = False
 
+    def check_collision(self, sprite, group):
+        """ Return a boolean """
+        return pygame.sprite.spritecollide(sprite, group, False)
+
     def get_is_playing(self):
         return self._is_playing
