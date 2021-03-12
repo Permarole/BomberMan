@@ -16,7 +16,7 @@ class Bomber(animation.AnimateSprite):
 
     def get_pos(self):
         """ Return bomber's position"""
-        return self.rect_x, self.rect_y
+        return self._rect_x, self._rect_y
 
     def get_power(self):
         """ Return bomber's fire power"""
@@ -29,14 +29,10 @@ class Bomber(animation.AnimateSprite):
     def move(self, direction):
         """ Move bomber according to the direction"""
         # TODO : verification for collisions
-        if direction == (0,1):
-            self._rect_x += self._speed
-        elif direction == (1,0):
-            self._rect_y += self._speed
-        elif direction == (0,-1):
-            self._rect_x -= self._speed
-        elif direction == (-1,0):
-            self._rect_y -= self._speed
+        self._rect_x += direction[0]* self._speed
+        self._rect_y += direction[1]* self._speed
+        print('moving')
+        
 
     def die(self):
         """ Remove bomber sprite and play death animation"""
