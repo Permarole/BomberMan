@@ -55,6 +55,23 @@ def load_animation_images(sprite_name):
 def load_images(sprite_name):
     pass
 
+def load_sprite_sheet(sprite_name,sprite_size,offset = (0,0)):
+    """" Load a sprite sheet, sprite_size define how to subsurface the ss"""
+    images = []
+    # Get path
+    path = f"assets/{sprite_name}.png"
+    # Load the sprite sheet
+    image = pygame.image.load(path)
+
+    # Calculate the number of image for each row and each columns
+    nbrows = image.get_width()//sprite_size[0]
+    nbcols = image.get_height()//sprite_size[1]
+    # Append each sprite to the list
+    for row in range (nbrows):
+        for col in range (nbcols):
+            images.append(image.subsurface(((row*sprite_size[0],col*sprite_size[1]),sprite_size)))
+    return images
+
 # Create dictionary that will contain the images of every sprites
 # TODO implement correct sprite
 animations = {
