@@ -73,11 +73,11 @@ def load_sprite_sheet(sprite_name,sprite_size,offset = (0,0)):
     return images
 
 # Create dictionary that will contain the images of every sprites
-# TODO implement correct sprite
 animations = {
     'bomber_black': load_sprite_sheet('bomber_black',(32,32)),
     'bomber_blue': load_sprite_sheet('bomber_blue',(32,32)),
     'bomber_green': load_sprite_sheet('bomber_green',(32,32)),
     'bomber_red': load_sprite_sheet('bomber_red',(32,32)),
-    'bomber_white': load_sprite_sheet('bomber_white',(32,32))
+    'bomber_white': load_sprite_sheet('bomber_white',(32,32)),
+    'bomb': load_animation_images('bomb',6)
 }
