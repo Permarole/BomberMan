@@ -1,11 +1,11 @@
 import animation
 
-
 class Bomber(animation.AnimateSprite):
     """ BomberMan, everything is in the name """
 
-    def __init__(self, pos, color, speed=5, stack=1, fire_power=3, shield=False):
+    def __init__(self, game, pos, color, speed=5, stack=1, fire_power=3, shield=False):
         super().__init__('bomber_'+color+'.png')
+        self._game = game
         self._shield = shield
         self._stack = stack
         self._fire_power = fire_power
@@ -44,4 +44,4 @@ class Bomber(animation.AnimateSprite):
 
     def bomb(self):
         """ Set one bomb on the current bomber's position """
-        pass
+        self._game.new_bomb(self)
