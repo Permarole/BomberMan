@@ -6,11 +6,15 @@ class AnimateSprite(pygame.sprite.Sprite):
 
     def __init__(self, sprite_name, size=(200, 200)):
         super().__init__()
-        self.size = size
-        self.image = pygame.image.load(f'assets/{sprite_name}.png')
-        self.image = pygame.transform.scale(self.image, size)
+        #self.image = pygame.image.load(f'assets/{sprite_name}.png')
+        #self.image = pygame.transform.scale(self.image, size)
         self.current_image = 0  # Start animation at first image
         self.images = animations.get(sprite_name)
+        
+   #           self.images[i] = pygame.transform.scale(self.images[i],size)
+        self.image = self.images[0]
+        self.size = self.image.get_size()
+
         self.animation = False
 
     # method to start animation

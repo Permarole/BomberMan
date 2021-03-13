@@ -11,36 +11,49 @@ class Game:
 
         self._size = window_size
         self._is_playing = False
-        self._bombers = pygame.sprite.Group()
-        self._bombs = pygame.sprite.Group()
+        self._bombers =  pygame.sprite.Group()
+        self._bombs = []#pygame.sprite.Group()
         self._fires = pygame.sprite.Group()
         self._bonuses = pygame.sprite.Group()
         self._pressed = dict()
         self._sound_manager = SoundManager()
-        self._player = Player(self, (0,0), "red")
+        self._player = Player(self, (0,0), 'red')
         self._level = level
 
     def start(self):
         self._is_playing = True
+        self._player.start_animation()
 
     def new_bomb(self, bomber):
         """ Create a new bomb and add it to _bombs"""
-        self._bombs.add(Bomb(bomber))
+        bomb = Bomb(bomber)
+        self._bombs.append(bomb)
+        bomb.start_animation()
+    
+    def remove_bomb(self, bomb):
+        self._bombs.remove(bomb)
+
 
     def draw(self, screen) :
         # Draw every bombs
-        self._bombs.draw(screen)
+        #self._bombs.draw(screen)
+        for bomb in self._bombs:
+            screen.blit(bomb.image, bomb.get_pos())
+
         # Draw player
-        self._player.draw(screen)
+        screen.blit(self._player.image, self._player.get_pos())
+        #self._player.draw(screen)
         # Draw every bonuses
         self._bonuses.draw(screen)
         # Draw every bombers
-        self._bombers.draw(screen)
 
     def update(self,screen):
         keys = pygame.key.get_pressed()
         self._player.listen(keys)
-
+        self._player.animate(True)
+        for i in range(len(self._bombs)):
+            length = len(self._bombs)
+            self._bombs[i].animate()
         # Draw every sprite
         self.draw(screen)
 
