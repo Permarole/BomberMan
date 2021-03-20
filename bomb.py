@@ -4,7 +4,7 @@ import animation
 class Bomb(animation.AnimateSprite):
 
     def __init__(self, bomber):
-        super().__init__('bomb.png')
+        super().__init__('bomb')
         self._bomber = bomber
         self._power = bomber.get_power()
         self._rect = self.image.get_rect()
