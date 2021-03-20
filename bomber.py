@@ -21,6 +21,8 @@ class Bomber(animation.AnimateSprite):
         self._rect = self.image.get_rect()
         self._rect_x = pos[0]
         self._rect_y = pos[1]
+        self.direction = directions.NONE
+        self._last_deplacement = (0,0)
 
     def get_pos(self):
         """ Return bomber's position"""
@@ -37,10 +39,11 @@ class Bomber(animation.AnimateSprite):
     def move(self, direction):
         """ Move bomber according to the direction"""
         # TODO : verification for collisions
+        # Manage the movment
+        
         self._rect_x += direction[0]* self._speed
         self._rect_y += direction[1]* self._speed
-        print('moving')
-        
+        self._last_deplacement = direction
         # Manage the animation
 #        if direction[0] == 1 and self.direction == directions.NONE : 
 #            self.direction = directions.RIGHT
@@ -53,6 +56,9 @@ class Bomber(animation.AnimateSprite):
 #        if direction[0] == 0 and direction[1] == 0:
 #            self.direction = directions.NONE
 
+
+           
+                    
     def die(self):
         """ Remove bomber sprite and play death animation"""
         pass
@@ -60,3 +66,23 @@ class Bomber(animation.AnimateSprite):
     def bomb(self):
         """ Set one bomb on the current bomber's position """
         self._game.new_bomb(self)
+
+    def animate(self, loop=False):
+        """"""""
+        if(self._last_deplacement != (0,0)):
+            super().animate(True)
+            multiply = 0
+            if self._last_deplacement [0] == 1 : 
+                multiply = 1
+            elif self._last_deplacement [0] == -1 :
+                multiply = 3
+            if self._last_deplacement [1] == 1 : 
+                multiply = 2              
+            elif self._last_deplacement [1] == -1:
+                multiply = 0
+            self.set_current_image(multiply*7+self.get_current_image()%7)
+            self._last_deplacement = (0,0)
+
+
+
+        
