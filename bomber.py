@@ -1,4 +1,12 @@
 import animation
+import enum
+
+class directions(enum.Enum):
+    NONE = 0
+    UP = 1
+    RIGHT = 2
+    DOWN = 3
+    LEFT = 4
 
 class Bomber(animation.AnimateSprite):
     """ BomberMan, everything is in the name """
@@ -33,6 +41,17 @@ class Bomber(animation.AnimateSprite):
         self._rect_y += direction[1]* self._speed
         print('moving')
         
+        # Manage the animation
+#        if direction[0] == 1 and self.direction == directions.NONE : 
+#            self.direction = directions.RIGHT
+#        elif direction[0] == -1 and self.direction == directions.NONE:
+#            self.direction = directions.LEFT
+#        if direction[1] == 1 and self.direction == directions.NONE: 
+#            self.direction = directions.DOWN                
+#        elif direction[1] == -1 and self.direction == directions.NONE:
+#            self.direction = directions.UP
+#        if direction[0] == 0 and direction[1] == 0:
+#            self.direction = directions.NONE
 
     def die(self):
         """ Remove bomber sprite and play death animation"""
