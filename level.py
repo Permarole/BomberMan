@@ -1,6 +1,7 @@
 import numpy as np
 import enum
-import block
+from block import Block
+from unbreakable import Unbreakable
 import pygame 
 from random import randint
 class Cases(enum.Enum):
@@ -18,13 +19,12 @@ class Level:
         self._row = 13
         self._col = 17
         self._cases = np.empty([self._row, self._col])
-        self._unbreakable_image = pygame.image.load(f'assets/unbreakable.png')
-        self._unbreakable_image = pygame.transform.scale(self._unbreakable_image, (int(size[0]/self._col),int(size[1]/self._row)))
-        self._block_image = pygame.image.load(f'assets/block.png')
-        self._block_image = pygame.transform.scale(self._block_image, (int(size[0]/self._col),int(size[1]/self._row)))
-        self._spawn_image = pygame.image.load(f'assets/spawn.png')
-        self._spawn_image = pygame.transform.scale(self._spawn_image, (int(size[0]/self._col),int(size[1]/self._row)))
-        
+        # self._unbreakable_image = pygame.image.load(f'assets/unbreakable.png')
+        # self._unbreakable_image = pygame.transform.scale(self._unbreakable_image, (int(size[0]/self._col),int(size[1]/self._row)))
+        # self._spawn_image = pygame.image.load(f'assets/spawn.png')
+        # self._spawn_image = pygame.transform.scale(self._spawn_image, (int(size[0]/self._col),int(size[1]/self._row)))
+        self._size = size
+        self._group = pygame.sprite.Group()
         self.load_map("map1")
 
     def generate_map(self):
@@ -49,21 +49,20 @@ class Level:
                     self._cases[row][col] = int(value)
                     col = col + 1
                 row = row + 1
+            for row in range(len(self._cases)):
+                for col in range(len(self._cases[row])):
+                    if self._cases[row][col] == Cases.BLOCK.value :
+                        pos = (self._size[0]/self._col*col,self._size[1]/self._row*row)
+                        self._group.add(Block(pos,(int(self._size[0]/self._col),int(self._size[1]/self._row))))
+                    elif self._cases[row][col] == Cases.UNBREAKABLE.value :
+                        pos = (self._size[0]/self._col*col,self._size[1]/self._row*row)
+                        self._group.add(Unbreakable(pos, (int(self._size[0]/self._col),int(self._size[1]/self._row))))
 
 
     def draw(self,screen):
         """draw the level and the block components"""
-        for row in range(len(self._cases)):
-            for col in range(len(self._cases[row])):
-                if self._cases[row][col] == Cases.BLOCK.value :
-                    pos = (screen.get_width()/self._col*col,screen.get_height()/self._row*row)
-                    screen.blit(self._block_image,pos) 
-                elif self._cases[row][col] == Cases.UNBREAKABLE.value :
-                    pos = (screen.get_width()/self._col*col,screen.get_height()/self._row*row)
-                    screen.blit(self._unbreakable_image,pos) 
-                elif self._cases[row][col] == Cases.SPAWN.value :
-                    pos = (screen.get_width()/self._col*col,screen.get_height()/self._row*row)
-                    screen.blit(self._spawn_image,pos) 
+        self._group.draw(screen)
+
     def is_coliding_with(self,animation):
         pass
     # TODO : accessor
