@@ -22,4 +22,5 @@ class Player(bomber.Bomber):
         if keys[pygame.K_SPACE]:
             self.bomb()
         if moveh != 0 or movev != 0:
-            self.move((moveh,moveh))
+            self.animate()
+            self.move((moveh,movev))
