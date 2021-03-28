@@ -77,7 +77,8 @@ def load_animation_images(sprite_name,nb_image):
     return images
 
 def load_images(sprite_name):
-    pass
+
+    return [pygame.image.load(f"assets/{sprite_name}.png")]
 
 def load_sprite_sheet(sprite_name,sprite_size,offset = (0,0)):
     """" Load a sprite sheet, sprite_size define how to subsurface the ss"""
