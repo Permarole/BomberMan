@@ -10,11 +10,12 @@ class AnimateSprite(pygame.sprite.Sprite):
         #self.image = pygame.transform.scale(self.image, size)
         self.current_image = 0  # Start animation at first image
         self.images = animations.get(sprite_name)
-        
-   #           self.images[i] = pygame.transform.scale(self.images[i],size)
+        for i in range(len(self.images)):
+            self.images[i] = pygame.transform.scale(self.images[i], size)
         self.image = self.images[0]
         self.size = self.image.get_size()
-
+        self._masks = []
+        self.set_mask(self.image.get_rect())
         self.animation = False
 
     # method to start animation
@@ -47,6 +48,18 @@ class AnimateSprite(pygame.sprite.Sprite):
         if value<len(self.images):
             self.current_image = value
             self.image = self.images[self.current_image]
+
+    def set_mask(self,rect):
+
+        for image in self.images:
+            self._masks.append(pygame.mask.from_surface(image.subsurface((rect))))
+
+    def get_mask(self):
+
+        return self._masks[self.current_image]
+
+
+
 
 #TODO add exception if the file is not found
 # load sprite's images
@@ -90,5 +103,6 @@ animations = {
     'bomber_green': load_sprite_sheet('bomber_green',(32,32)),
     'bomber_red': load_sprite_sheet('bomber_red',(32,32)),
     'bomber_white': load_sprite_sheet('bomber_white',(32,32)),
-    'bomb': load_animation_images('bomb',6)
+    'bomb': load_animation_images('bomb',6),
+    'block': load_images('block')
 }
