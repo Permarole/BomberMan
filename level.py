@@ -40,15 +40,16 @@ class Level:
 #TODO : excepetion read error
     def load_map(self, name):
         """ load map from file"""
-        file = open(f'maps/{name}.bombermap', 'r')
-        row = 0
-        for line in file:
-            values = line.split('   ')
-            col = 0
-            for value in values :
-                self._cases[row][col] = int(value)
-                col = col + 1
-            row = row + 1
+        with open(f'maps/{name}.bombermap', 'r') as file:
+            row = 0
+            for line in file:
+                values = line.split('   ')
+                col = 0
+                for value in values :
+                    self._cases[row][col] = int(value)
+                    col = col + 1
+                row = row + 1
+
 
     def draw(self,screen):
         """draw the level and the block components"""
