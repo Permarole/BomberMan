@@ -3,7 +3,7 @@ import animation
 from soundManager import SoundManager
 from player import Player
 from bomb import Bomb
-
+from level import Level
 
 class Game:
 
@@ -18,8 +18,9 @@ class Game:
         self._pressed = dict()
         self._sound_manager = SoundManager()
         self._player = Player(self, (0,0), 'red')
-        self._level = level
+        self._level = Level(self._size)
 
+        
     def start(self):
         self._is_playing = True
         self._player.start_animation()
@@ -35,6 +36,7 @@ class Game:
 
 
     def draw(self, screen) :
+        self._level.draw(screen)
         # Draw every bombs
         #self._bombs.draw(screen)
         for bomb in self._bombs:
