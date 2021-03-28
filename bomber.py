@@ -18,11 +18,13 @@ class Bomber(animation.AnimateSprite):
         self._stack = stack
         self._fire_power = fire_power
         self._speed = speed
-        self._rect = self.image.get_rect()
+        self.rect = self.image.get_rect()
         self._rect_x = pos[0]
         self._rect_y = pos[1]
         self.direction = directions.NONE
         self._last_deplacement = (0,0)
+        self.set_mask(self.rect)
+
 
     def get_pos(self):
         """ Return bomber's position"""
@@ -40,7 +42,8 @@ class Bomber(animation.AnimateSprite):
         """ Move bomber according to the direction"""
         # TODO : verification for collisions
         # Manage the movment
-        
+
+        # if not self._game.check_collision(self, self._game._level):
         self._rect_x += direction[0]* self._speed
         self._rect_y += direction[1]* self._speed
         self._last_deplacement = direction
