@@ -40,6 +40,13 @@ class AnimateSprite(pygame.sprite.Sprite):
             self.image = self.images[self.current_image]
             self.image = pygame.transform.scale(self.image, self.size)
 
+    def get_current_image(self):
+        return self.current_image
+    
+    def set_current_image(self,value):
+        if value<len(self.images):
+            self.current_image = value
+            self.image = self.images[self.current_image]
 
 #TODO add exception if the file is not found
 # load sprite's images
