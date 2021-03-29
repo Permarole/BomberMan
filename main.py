@@ -39,7 +39,7 @@ start_button = Button(
             fontSize=50, margin=20,
             inactiveColour=(255, 0, 0),
             pressedColour=(0, 255, 0), radius=20,
-            onClick = lambda : game.start()     #run game.start() when the button is clicked
+            # onClick = lambda : game.start(),     #run game.start() when the button is clicked
             onClick = lambda : clicked(start_button)     #run game.start() when the button is clicked
          )
 
