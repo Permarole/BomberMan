@@ -15,12 +15,12 @@ screen_size = user32.GetSystemMetrics(0), user32.GetSystemMetrics(1)
 clock = pygame.time.Clock()
 FPS = 60
 
-#Init a game
-game = game.Game(1,1)
-
 # TODO Define window size
 WIDTH = 1080
 HEIGHT = 720
+
+#Init a game
+game = game.Game(1,(WIDTH,HEIGHT))
 
 # Initialisation pygame
 pygame.init()
