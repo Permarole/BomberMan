@@ -4,7 +4,7 @@ import pygame
 # Define a class that will handle animations
 class AnimateSprite(pygame.sprite.Sprite):
 
-    def __init__(self, sprite_name, size=(200, 200)):
+    def __init__(self, sprite_name, size=(80, 80)):
         super().__init__()
         #self.image = pygame.image.load(f'assets/{sprite_name}.png')
         #self.image = pygame.transform.scale(self.image, size)
