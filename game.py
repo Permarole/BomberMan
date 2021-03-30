@@ -17,7 +17,7 @@ class Game:
         self._bonuses = pygame.sprite.Group()
         self._pressed = dict()
         self._sound_manager = SoundManager()
-        self._player = Player(self, (0,0), 'red')
+        self._player = Player(self, (63,55), 'red')
         self._level = Level(self._size)
 
         
