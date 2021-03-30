@@ -69,6 +69,7 @@ class Bomber(animation.AnimateSprite):
     def bomb(self):
         """ Set one bomb on the current bomber's position """
         self._game.new_bomb(self)
+        self._stack -= 1
 
     def animate(self, loop=False):
         """"""""
