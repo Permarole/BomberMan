@@ -19,7 +19,7 @@ class Player(bomber.Bomber):
             movev -= 1
         if keys[pygame.K_DOWN]:
             movev += 1
-        if keys[pygame.K_SPACE]:
+        if keys[pygame.K_SPACE] & self._stack > 0:
             self.bomb()
         if moveh != 0 or movev != 0:
             self.animate()
