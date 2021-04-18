@@ -45,9 +45,11 @@ class Bomber(animation.AnimateSprite):
         # Manage the movment
 
         # if not self._game.check_collision(self, self._game._level):
-        self._rect_x += direction[0]* self._speed
-        self._rect_y += direction[1]* self._speed
+        self.rect.x += direction[0]* self._speed
+        self.rect.y += direction[1]* self._speed
         self._last_deplacement = direction
+        if not self._game.check_collision(self, self._game._bombs) :
+            self._on_bomb = False
         # Manage the animation
 #        if direction[0] == 1 and self.direction == directions.NONE : 
 #            self.direction = directions.RIGHT
