@@ -16,5 +16,5 @@ class Bomb(animation.AnimateSprite):
 
     def explode(self):
         """ Create fire animation and free one bomber's stack if it still exists """
-
+        self.animate()
         pass
