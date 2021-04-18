@@ -19,16 +19,17 @@ class Bomber(animation.AnimateSprite):
         self._fire_power = fire_power
         self._speed = speed
         self.rect = self.image.get_rect()
-        self._rect_x = pos[0]
-        self._rect_y = pos[1]
         self.direction = directions.NONE
         self._last_deplacement = (0,0)
         self.set_mask(self.rect)
+        self.rect.x = pos[0]
+        self.rect.y = pos[1]
+        self._on_bomb = False
 
 
     def get_pos(self):
         """ Return bomber's position"""
-        return self._rect_x, self._rect_y
+        return self.rect.x, self.rect.y
 
     def get_power(self):
         """ Return bomber's fire power"""
