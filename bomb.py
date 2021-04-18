@@ -7,8 +7,8 @@ class Bomb(animation.AnimateSprite):
         super().__init__('bomb')
         self._bomber = bomber
         self._power = bomber.get_power()
-        self._rect = self.image.get_rect()
-        self._rect_x, self._rect_y = bomber.get_pos()
+        self.rect = self.image.get_rect()
+        self.rect.x, self.rect.y = bomber.get_pos()
 
     def get_pos(self):
         """Return bomb's position"""
