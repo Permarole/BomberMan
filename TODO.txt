@@ -1,0 +1,23 @@
+- collision :
+	- mask sur le perso
+	- check avec le level
+	- cancelMovement (enregistrer pos précédente)
+	- boolean pour collision bomber/self.bomb
+
+- bomb :
+	- ajouter bombe dans la map
+	- jouer animation une fois et la détruire (bool exploded) + free stack
+	- créer le feu (destructeur bomb)
+	- collision du feu (avec level et bomber)
+	
+- créer un client réseau :
+	- afficheur
+	- envoyer les infos
+	
+- block
+	- spawn bonus (destructeur block) (game en attribut)
+	
+
+- générale :
+	- récuperer beau sprites
+	- trouver des sons
