@@ -23,4 +23,13 @@ class Player(bomber.Bomber):
             self.bomb()
         if moveh != 0 or movev != 0:
             self.animate()
+            pos = self.get_pos()
             self.move((moveh,movev))
+            if  self._game.check_collision(self, self._game._level._group) and \
+                self._game.check_collision(self, self._game._level._group) :
+                self.cancel_move(pos)
+
+
+    def cancel_move(self, pos):
+        self.rect.x = pos[0]
+        self.rect.y = pos[1]
