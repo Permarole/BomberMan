@@ -12,7 +12,7 @@ class Bomb(animation.AnimateSprite):
 
     def get_pos(self):
         """Return bomb's position"""
-        return self._rect_x, self._rect_y
+        return self.rect.x, self.rect.y
 
     def explode(self):
         """ Create fire animation and free one bomber's stack if it still exists """
