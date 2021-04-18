@@ -12,7 +12,7 @@ class Game:
         self._size = window_size
         self._is_playing = False
         self._bombers =  pygame.sprite.Group()
-        self._bombs = []#pygame.sprite.Group()
+        self._bombs = pygame.sprite.Group()
         self._fires = pygame.sprite.Group()
         self._bonuses = pygame.sprite.Group()
         self._pressed = dict()
@@ -28,7 +28,7 @@ class Game:
     def new_bomb(self, bomber):
         """ Create a new bomb and add it to _bombs"""
         bomb = Bomb(bomber)
-        self._bombs.append(bomb)
+        self._bombs.add(bomb)
         bomb.start_animation()
     
     def remove_bomb(self, bomb):
@@ -38,9 +38,9 @@ class Game:
     def draw(self, screen) :
         self._level.draw(screen)
         # Draw every bombs
-        #self._bombs.draw(screen)
-        for bomb in self._bombs:
-            screen.blit(bomb.image, bomb.get_pos())
+        self._bombs.draw(screen)
+        # for bomb in self._bombs:
+        #     screen.blit(bomb.image, bomb.get_pos())
 
         # Draw player
         screen.blit(self._player.image, self._player.get_pos())
@@ -53,9 +53,8 @@ class Game:
         keys = pygame.key.get_pressed()
         self._player.listen(keys)
         self._player.animate(True)
-        for i in range(len(self._bombs)):
-            length = len(self._bombs)
-            self._bombs[i].animate()
+        for i in self._bombs.sprites() :
+            i.explode()
         # Draw every sprite
         self.draw(screen)
 
