@@ -22,6 +22,7 @@ class Bomber(animation.AnimateSprite):
         self.direction = directions.NONE
         self._last_deplacement = (0,0)
         self.set_mask(self.rect)
+<<<<<<< Updated upstream
         self.rect.x = pos[0]
         self.rect.y = pos[1]
         self._on_bomb = False
@@ -71,8 +72,9 @@ class Bomber(animation.AnimateSprite):
 
     def bomb(self):
         """ Set one bomb on the current bomber's position """
-        self._game.new_bomb(self)
-        self._stack -= 1
+        if self._stack > 0:
+            if self._game.new_bomb(self) :
+                self._stack -= 1
 
     def animate(self, loop=False):
         """"""""
