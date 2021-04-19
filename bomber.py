@@ -22,7 +22,6 @@ class Bomber(animation.AnimateSprite):
         self.direction = directions.NONE
         self._last_deplacement = (0,0)
         self.set_mask(self.rect)
-<<<<<<< Updated upstream
         self.rect.x = pos[0]
         self.rect.y = pos[1]
         self._on_bomb = False

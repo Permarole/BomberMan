@@ -27,9 +27,6 @@ class Game:
 
     def new_bomb(self, bomber):
         """ Create a new bomb and add it to _bombs"""
-        bomb = Bomb(bomber)
-        self._bombs.add(bomb)
-        bomb.start_animation()
         self._level.new_bomb(bomber)
     
     def remove_bomb(self, bomb):
