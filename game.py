@@ -30,6 +30,7 @@ class Game:
         bomb = Bomb(bomber)
         self._bombs.add(bomb)
         bomb.start_animation()
+        self._level.new_bomb(bomber)
     
     def remove_bomb(self, bomb):
         self._bombs.remove(bomb)
