@@ -1,12 +1,12 @@
 - collision :
 	- mask sur le perso
-	- check avec le level
-	- cancelMovement (enregistrer pos précédente)
+	v check avec le level
+	v cancelMovement (enregistrer pos précédente)
 	- boolean pour collision bomber/self.bomb
 
 - bomb :
-	- ajouter bombe dans la map
-	- jouer animation une fois et la détruire (bool exploded) + free stack
+	v ajouter bombe dans la map
+	v jouer animation une fois et la détruire (bool exploded) + free stack
 	- créer le feu (destructeur bomb)
 	- collision du feu (avec level et bomber)
 	
