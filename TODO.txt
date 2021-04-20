@@ -7,8 +7,8 @@
 - bomb :
 	v ajouter bombe dans la map
 	v jouer animation une fois et la détruire (bool exploded) + free stack
-	- créer le feu (destructeur bomb)
-	- collision du feu (avec level et bomber)
+	R créer le feu (destructeur bomb)
+	R collision du feu (avec level et bomber)
 	
 - créer un client réseau :
 	- afficheur
